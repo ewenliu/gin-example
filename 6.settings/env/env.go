@@ -43,10 +43,14 @@ func loadEnvironmentAsMap()map[string]interface{} {
 
 
 func updateEnv(m map[string]interface{}){
-	for k :=range Env{
-		if v, exist := m[k]; exist{
-			Env[k] = v
-		}
+	//for k :=range Env{
+	//	if v, exist := m[k]; exist{
+	//		Env[k] = v
+	//	}
+	//}
+	
+	for k, v := range m{
+		Env[k] = v
 	}
 }
 
