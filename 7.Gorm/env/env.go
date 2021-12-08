@@ -9,7 +9,7 @@ import (
 
 var Env = map[string]interface{}{
 	"GinMode": "release",
-	"DB":      map[string]string{"default": "qa:NTQ0NjU5YjU0@(rm-ks-qa.mysql.rds.aliyuncs.com:3306)/gaea?charset=utf8mb4", "extra1": "tidb"},
+	"DB":      map[string]string{"default": "qa:NTQ0NjU5YjU0@(rm-ks-qa.mysql.rds.aliyuncs.com:3306)/gaea?charset=utf8mb4&loc=Asia%2FShanghai&parseTime=true", "extra1": "tidb"},
 	"Port":    8888,
 }
 
