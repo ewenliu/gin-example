@@ -48,7 +48,7 @@ func updateEnv(m map[string]interface{}){
 	//		Env[k] = v
 	//	}
 	//}
-	
+
 	for k, v := range m{
 		Env[k] = v
 	}

@@ -9,4 +9,10 @@ func LoadHandler(e *gin.Engine) {
 		routerGroup.GET("/bark", barkHandler)
 		routerGroup.POST("/other", otherHandler)
 	}
+
+	deepRouterGroup := routerGroup.Group("/info")
+
+	{
+		deepRouterGroup.GET("/overview", barkHandler)
+	}
 }
