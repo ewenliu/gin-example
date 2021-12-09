@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"github.com/ewenliu/gin-example/7.Gorm/db"
 	"github.com/jinzhu/gorm"
@@ -42,20 +43,20 @@ type Result struct{
 }
 
 func main() {
-	db.SetupDB()
+	//db.SetupDB()
 
-	var t = new(Tag)
-	session := db.GetDB()
-	defer func() {
-		_ = session.Close()
-	}()
+	//var t = new(Tag)
+	//session := db.GetDB()
+	//defer func() {
+	//	_ = session.Close()
+	//}()
 
 	// 查询
 	// 单条查询
 	//session.First(&t)
 	// 多条查询
-	var tags []Tag
-	session.Find(&tags)
+	//var tags []Tag
+	//session.Find(&tags)
 	// 条件查询
 	//var count int
 	//Debug() 打印原始sql
@@ -73,8 +74,8 @@ func main() {
 	//session.Raw(sql).Scan(&results)
 
 	// 链式过滤
-	session = session.Where("name like ?", "%lyw%")
-	session.Debug().Where("description = ?", "描述").Find(&t)
+	//session = session.Where("name like ?", "%lyw%")
+	//session.Debug().Where("description = ?", "描述").Find(&t)
 
 
 	// 更新
@@ -87,4 +88,10 @@ func main() {
 
 	// 删除
 	//fmt.Println(t.Id)
+	rdb := db.GetRedisClient()
+	val, err := rdb.Get(context.TODO(), "lyw").Result()
+	if err != nil{
+		fmt.Println(err)
+	}
+	fmt.Println(val)
 }
